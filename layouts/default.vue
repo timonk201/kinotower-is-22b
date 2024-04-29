@@ -9,8 +9,8 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <div>
-        <button class="btn btn-outline-success me-2" type="button">Sign up</button>
-        <button class="btn btn-outline-primary" type="button">Sign in</button>
+        <nuxt-link class="btn btn-outline-success me-2" type="button" to="/regist">Sign up</nuxt-link>
+        <nuxt-link class="btn btn-outline-primary" type="button" to="/auth">Sign in</nuxt-link>
       </div>
     </div>
   </div>

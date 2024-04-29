@@ -1,8 +1,9 @@
 <script lang="ts" setup>
   const filmsStore = useFilmsStore();
   const categoriesStore = useCategoriesStore();
-  filmsStore.fetchFilms();
+  const countriesStore = useCountriesStore();
 
+  filmsStore.fetchFilms();
 </script>
 
 <template>
@@ -16,9 +17,7 @@
     <div class="col-md-4">
       <select class="form-select">
         <option selected :value="null">Select country...</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option v-for="country in countriesStore.countries" :key="country.id" :value="country.id">{{ country.name }}</option>
       </select>
     </div>
     <div class="col-md-3">
@@ -39,11 +38,11 @@
       <img :src="film.link_img" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{ film.name }}</h5>
-        <p class="card-text">Rating: {{ Number(film.ratingAvg).toFixed(1)  }}</p>
+        <p class="card-text">Rating: {{ film.ratingAvg }}</p>
         <p class="card-text">{{ film.duration }} min.</p>
         <p class="card-text">
-          <template v-for="(category, index) in film.categories" :key="category.id">
-            {{ category.name }} {{ (index < film.categories.length - 1) ? ', ' : '' }}
+          <template v-for="category in film.categories" :key="category.id">
+            {{ category.name }}
           </template>
         </p>
       </div>
