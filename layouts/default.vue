@@ -1,16 +1,19 @@
 <template>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" @click.privent="$router.push('/')" href="#">
       <img src="/logo.svg" alt="logo" width="40">inoTower
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <div>
-        <nuxt-link class="btn btn-outline-success me-2" type="button" to="/regist">Sign up</nuxt-link>
-        <nuxt-link class="btn btn-outline-primary" type="button" to="/auth">Sign in</nuxt-link>
+      <div v-if="!authStore.authData">
+        <button @click="$router.push('/signup')" class="btn btn-outline-success me-2" type="button">Sign up</button>
+        <button @click="$router.push('/signin')" class="btn btn-outline-primary" type="button">Sign in</button>
+      </div>
+      <div v-else>
+        <button class="btn btn-outline-danger me-2" type="button">Sign out</button>
       </div>
     </div>
   </div>
@@ -34,7 +37,7 @@
 </template>
 
 <script lang="ts" setup>
-
+  const authStore = useAuthStore();
 </script>
 
 <style>
