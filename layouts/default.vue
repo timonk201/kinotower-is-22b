@@ -13,7 +13,7 @@
         <button @click="$router.push('/signin')" class="btn btn-outline-primary" type="button">Sign in</button>
       </div>
       <div v-else>
-        <button class="btn btn-outline-danger me-2" type="button">Sign out</button>
+        <button @click="authStore.signOut(), $router.push('/')" class="btn btn-outline-danger me-2" type="button">Sign out</button>
       </div>
     </div>
   </div>

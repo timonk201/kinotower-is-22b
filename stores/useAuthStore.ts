@@ -24,6 +24,15 @@ export const useAuthStore = defineStore('auth', () => {
     }
   }
 
+  async function signOut() {
+    await api.post('/auth/signout', null, {
+      headers: {
+        'Authorization': 'Bearer ' + authData.value.token,
+      }
+    });
+    removeAuthData();
+  }
+
   function saveAuthData(data:object) {
     authData.value = data;
     authCookie.value = btoa(JSON.stringify(data));
@@ -47,6 +56,7 @@ export const useAuthStore = defineStore('auth', () => {
     authData,
     signUp,
     signIn,
-    
+    signOut,
+
   }
 });

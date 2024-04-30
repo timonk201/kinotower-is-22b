@@ -5,7 +5,7 @@ export const useFilmsStore = defineStore('films', () => {
   const films = ref([]);
   const params = {
     page: 1,
-    size: 2,
+    size: 3,
     sortBy: 'name',
     sortDir: 'asc',
     category: null,
